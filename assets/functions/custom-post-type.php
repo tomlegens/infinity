@@ -1,117 +1,160 @@
 <?php
-/* joints Custom Post Type Example
-This page walks you through creating 
-a custom post type and taxonomies. You
-can edit this one or copy the following code 
-to create another one. 
+//Register team bios CPT
+function site_team_bios() {
 
-I put this in a separate file so as to 
-keep it organized. I find it easier to edit
-and change things if they are concentrated
-in their own file.
+	$labels = array(
+		'name'                  => _x( 'Team Members', 'Post Type General Name', 'jointswp' ),
+		'singular_name'         => _x( 'Team Member', 'Post Type Singular Name', 'jointswp' ),
+		'menu_name'             => __( 'Team Members', 'jointswp' ),
+		'name_admin_bar'        => __( 'Team Members', 'jointswp' ),
+		'archives'              => __( 'Team Member Archives', 'jointswp' ),
+		'parent_item_colon'     => __( 'Parent Team Member:', 'jointswp' ),
+		'all_items'             => __( 'All Team Members', 'jointswp' ),
+		'add_new_item'          => __( 'Add New Team Member', 'jointswp' ),
+		'add_new'               => __( 'Add New Team Member', 'jointswp' ),
+		'new_item'              => __( 'New Team Member', 'jointswp' ),
+		'edit_item'             => __( 'Edit Team Member', 'jointswp' ),
+		'update_item'           => __( 'Update Team Member', 'jointswp' ),
+		'view_item'             => __( 'View Team Member', 'jointswp' ),
+		'search_items'          => __( 'Search Team Member', 'jointswp' ),
+		'not_found'             => __( 'Team Member Not found', 'jointswp' ),
+		'not_found_in_trash'    => __( 'Team Member Not found in Trash', 'jointswp' ),
+		'featured_image'        => __( 'Team Member Featured Image', 'jointswp' ),
+		'set_featured_image'    => __( 'Set Team Member featured image', 'jointswp' ),
+		'remove_featured_image' => __( 'Remove Team Member featured image', 'jointswp' ),
+		'use_featured_image'    => __( 'Use as Team Member featured image', 'jointswp' ),
+		'insert_into_item'      => __( 'Insert into Team Member', 'jointswp' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this Team Member', 'jointswp' ),
+		'items_list'            => __( 'Team Member list', 'jointswp' ),
+		'items_list_navigation' => __( 'Team Member list navigation', 'jointswp' ),
+		'filter_items_list'     => __( 'Filter Team Member list', 'jointswp' ),
+	);
 
-*/
+	$rewrite = array(
+		'slug'                  => 'about/our-team',
+		'with_front'            => true,
+		'pages'                 => true,
+		'feeds'                 => true,
+	);
+
+	$args = array(
+		'label'                 => __( 'Team Members', 'jointswp' ),
+		'description'           => __( 'Your Description here', 'jointswp' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'page-attributes', ),
+		'taxonomies'            => array( 'post_tag' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-businessman',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => false,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'rewrite'               => $rewrite,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'our-team', $args );
+
+}
+add_action( 'init', 'site_team_bios', 0 );
+
+// Register Custom Post Type
+function open_positions() {
+
+	$labels = array(
+		'name'                  => _x( 'Jobs', 'Post Type General Name', 'jointswp' ),
+		'singular_name'         => _x( 'Job', 'Post Type Singular Name', 'jointswp' ),
+		'menu_name'             => __( 'Jobs', 'jointswp' ),
+		'name_admin_bar'        => __( 'Jobs', 'jointswp' ),
+		'archives'              => __( 'Job Archives', 'jointswp' ),
+		'parent_item_colon'     => __( '', 'jointswp' ),
+		'all_items'             => __( 'All Jobs', 'jointswp' ),
+		'add_new_item'          => __( 'Add New Job', 'jointswp' ),
+		'add_new'               => __( 'Add Job', 'jointswp' ),
+		'new_item'              => __( 'New Job', 'jointswp' ),
+		'edit_item'             => __( 'Edit Job', 'jointswp' ),
+		'update_item'           => __( 'Update Job', 'jointswp' ),
+		'view_item'             => __( 'View Job', 'jointswp' ),
+		'search_items'          => __( 'Search Job', 'jointswp' ),
+		'not_found'             => __( 'Not found', 'jointswp' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'jointswp' ),
+		'featured_image'        => __( '', 'jointswp' ),
+		'set_featured_image'    => __( '', 'jointswp' ),
+		'remove_featured_image' => __( '', 'jointswp' ),
+		'use_featured_image'    => __( '', 'jointswp' ),
+		'insert_into_item'      => __( '', 'jointswp' ),
+		'uploaded_to_this_item' => __( '', 'jointswp' ),
+		'items_list'            => __( 'Items list', 'jointswp' ),
+		'items_list_navigation' => __( 'Items list navigation', 'jointswp' ),
+		'filter_items_list'     => __( 'Filter items list', 'jointswp' ),
+	);
+	$args = array(
+		'label'                 => __( 'Job', 'jointswp' ),
+		'description'           => __( 'Create and manage open job postings', 'jointswp' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes', ),
+		'taxonomies'            => array( 'jobs_category' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-megaphone',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'open-positions', $args );
+
+}
+add_action( 'init', 'open_positions', 0 );
 
 
-// let's create the function for the custom type
-function custom_post_example() { 
-	// creating (registering) the custom type 
-	register_post_type( 'custom_type', /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
-	 	// let's now add all the options for this post type
-		array('labels' => array(
-			'name' => __('Custom Types', 'jointswp'), /* This is the Title of the Group */
-			'singular_name' => __('Custom Post', 'jointswp'), /* This is the individual type */
-			'all_items' => __('All Custom Posts', 'jointswp'), /* the all items menu item */
-			'add_new' => __('Add New', 'jointswp'), /* The add new menu item */
-			'add_new_item' => __('Add New Custom Type', 'jointswp'), /* Add New Display Title */
-			'edit' => __( 'Edit', 'jointswp' ), /* Edit Dialog */
-			'edit_item' => __('Edit Post Types', 'jointswp'), /* Edit Display Title */
-			'new_item' => __('New Post Type', 'jointswp'), /* New Display Title */
-			'view_item' => __('View Post Type', 'jointswp'), /* View Display Title */
-			'search_items' => __('Search Post Type', 'jointswp'), /* Search Custom Type Title */ 
-			'not_found' =>  __('Nothing found in the Database.', 'jointswp'), /* This displays if there are no entries yet */ 
-			'not_found_in_trash' => __('Nothing found in Trash', 'jointswp'), /* This displays if there is nothing in the trash */
-			'parent_item_colon' => ''
-			), /* end of arrays */
-			'description' => __( 'This is the example custom post type', 'jointswp' ), /* Custom Type Description */
-			'public' => true,
-			'publicly_queryable' => true,
-			'exclude_from_search' => false,
-			'show_ui' => true,
-			'query_var' => true,
-			'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */ 
-			'menu_icon' => 'dashicons-book', /* the icon for the custom post type menu. uses built-in dashicons (CSS class name) */
-			'rewrite'	=> array( 'slug' => 'custom_type', 'with_front' => false ), /* you can specify its url slug */
-			'has_archive' => 'custom_type', /* you can rename the slug here */
-			'capability_type' => 'post',
-			'hierarchical' => false,
-			/* the next one is important, it tells what's enabled in the post editor */
-			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
-	 	) /* end of options */
-	); /* end of register post type */
-	
-	/* this adds your post categories to your custom post type */
-	register_taxonomy_for_object_type('category', 'custom_type');
-	/* this adds your post tags to your custom post type */
-	register_taxonomy_for_object_type('post_tag', 'custom_type');
-	
-} 
+// Register Job Category Taxonomy
 
-	// adding the function to the Wordpress init
-	add_action( 'init', 'custom_post_example');
-	
-	/*
-	for more information on taxonomies, go here:
-	http://codex.wordpress.org/Function_Reference/register_taxonomy
-	*/
-	
-	// now let's add custom categories (these act like categories)
-    register_taxonomy( 'custom_cat', 
-    	array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-    	array('hierarchical' => true,     /* if this is true, it acts like categories */             
-    		'labels' => array(
-    			'name' => __( 'Custom Categories', 'jointswp' ), /* name of the custom taxonomy */
-    			'singular_name' => __( 'Custom Category', 'jointswp' ), /* single taxonomy name */
-    			'search_items' =>  __( 'Search Custom Categories', 'jointswp' ), /* search title for taxomony */
-    			'all_items' => __( 'All Custom Categories', 'jointswp' ), /* all title for taxonomies */
-    			'parent_item' => __( 'Parent Custom Category', 'jointswp' ), /* parent title for taxonomy */
-    			'parent_item_colon' => __( 'Parent Custom Category:', 'jointswp' ), /* parent taxonomy title */
-    			'edit_item' => __( 'Edit Custom Category', 'jointswp' ), /* edit custom taxonomy title */
-    			'update_item' => __( 'Update Custom Category', 'jointswp' ), /* update title for taxonomy */
-    			'add_new_item' => __( 'Add New Custom Category', 'jointswp' ), /* add new title for taxonomy */
-    			'new_item_name' => __( 'New Custom Category Name', 'jointswp' ) /* name title for taxonomy */
-    		),
-    		'show_admin_column' => true, 
-    		'show_ui' => true,
-    		'query_var' => true,
-    		'rewrite' => array( 'slug' => 'custom-slug' ),
-    	)
-    );   
-    
-	// now let's add custom tags (these act like categories)
-    register_taxonomy( 'custom_tag', 
-    	array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-    	array('hierarchical' => false,    /* if this is false, it acts like tags */                
-    		'labels' => array(
-    			'name' => __( 'Custom Tags', 'jointswp' ), /* name of the custom taxonomy */
-    			'singular_name' => __( 'Custom Tag', 'jointswp' ), /* single taxonomy name */
-    			'search_items' =>  __( 'Search Custom Tags', 'jointswp' ), /* search title for taxomony */
-    			'all_items' => __( 'All Custom Tags', 'jointswp' ), /* all title for taxonomies */
-    			'parent_item' => __( 'Parent Custom Tag', 'jointswp' ), /* parent title for taxonomy */
-    			'parent_item_colon' => __( 'Parent Custom Tag:', 'jointswp' ), /* parent taxonomy title */
-    			'edit_item' => __( 'Edit Custom Tag', 'jointswp' ), /* edit custom taxonomy title */
-    			'update_item' => __( 'Update Custom Tag', 'jointswp' ), /* update title for taxonomy */
-    			'add_new_item' => __( 'Add New Custom Tag', 'jointswp' ), /* add new title for taxonomy */
-    			'new_item_name' => __( 'New Custom Tag Name', 'jointswp' ) /* name title for taxonomy */
-    		),
-    		'show_admin_column' => true,
-    		'show_ui' => true,
-    		'query_var' => true,
-    	)
-    ); 
-    
-    /*
-    	looking for custom meta boxes?
-    	check out this fantastic tool:
-    	https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress
-    */
+function jobs_category() {
+
+	$labels = array(
+		'name'                       => _x( 'Job Category', 'Taxonomy General Name', 'jointswp' ),
+		'singular_name'              => _x( 'Job Category', 'Taxonomy Singular Name', 'jointswp' ),
+		'menu_name'                  => __( 'Job Categories', 'jointswp' ),
+		'all_items'                  => __( 'All Items', 'jointswp' ),
+		'parent_item'                => __( 'Parent Item', 'jointswp' ),
+		'parent_item_colon'          => __( 'Parent Item:', 'jointswp' ),
+		'new_item_name'              => __( 'New Job Category', 'jointswp' ),
+		'add_new_item'               => __( 'Add New Job Category', 'jointswp' ),
+		'edit_item'                  => __( 'Edit Job Category', 'jointswp' ),
+		'update_item'                => __( 'Update Job Category', 'jointswp' ),
+		'view_item'                  => __( 'View Job Category', 'jointswp' ),
+		'separate_items_with_commas' => __( 'Separate job categories by comma.', 'jointswp' ),
+		'add_or_remove_items'        => __( 'Add or remove job category', 'jointswp' ),
+		'choose_from_most_used'      => __( 'Choose from the most used job categories', 'jointswp' ),
+		'popular_items'              => __( 'Popular Job Categories', 'jointswp' ),
+		'search_items'               => __( 'Search Job Categories', 'jointswp' ),
+		'not_found'                  => __( 'Job Category Not Found', 'jointswp' ),
+		'no_terms'                   => __( 'No Job Category', 'jointswp' ),
+		'items_list'                 => __( '', 'jointswp' ),
+		'items_list_navigation'      => __( '', 'jointswp' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'jobs-category', array( 'open-positions' ), $args );
+
+}
+add_action( 'init', 'jobs_category', 0 );
