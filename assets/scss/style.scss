@@ -1,15 +1,14 @@
 /******************************************************************
-	
+
 Stylesheet: Main Stylesheet
 
-Here's where the magic happens. Here is where you import
-all of your Sass files so they can compile into one
-CSS file. 
+Import all of your Sass files so they can compile into one
+CSS file.
 
 ******************************************************************/
-
-// Import custom mixins
-@import "mixins";
+// Import custom mixins/utilities
+@import "utils/2x";
+@import "utils/mixins";
 
 // Import local Foundation overrides - Don't link to Bower version as it will be overwritten whenever updated
 @import "settings";
@@ -25,16 +24,15 @@ CSS file.
 // Select the components you want to use
 @include foundation-global-styles;
 @include foundation-grid;
-//@include foundation-flex-classes;
 //@include foundation-flex-grid;
 @include foundation-typography;
-@include foundation-forms;
 @include foundation-button;
+@include foundation-forms;
 @include foundation-visibility-classes;
 @include foundation-float-classes;
 @include foundation-accordion;
 @include foundation-accordion-menu;
-@include foundation-badge;
+//@include foundation-badge;
 @include foundation-breadcrumbs;
 @include foundation-button-group;
 @include foundation-callout;
@@ -46,7 +44,6 @@ CSS file.
 @include foundation-label;
 @include foundation-media-object;
 @include foundation-menu;
-@include foundation-menu-icon;
 @include foundation-off-canvas;
 @include foundation-orbit;
 @include foundation-pagination;
@@ -62,12 +59,19 @@ CSS file.
 @include foundation-tooltip;
 @include foundation-top-bar;
 
+// BASE STYLES
+@import "base/*";
 
-// Import your custom styles
-@import "main";
+// LAYOUT STYLES
+@import "layout/*";
 
-// Import your retina/HD styles
-@import "2x";
+// COMPONENTS
+@import "components/*";
 
-// Import your print styles
-@import "print";
+// PAGES
+@import "pages/*";
+
+@import "utils/print";
+
+// SHAME FILE
+@import "shame";

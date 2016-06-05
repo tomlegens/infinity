@@ -37,7 +37,6 @@
 	<!-- Uncomment this line if using the Off-Canvas Menu -->
 
 	<body <?php body_class(); ?>>
-	<i class="fa fa-envira" aria-hidden="true"></i>
 		<div class="off-canvas-wrapper">
 
 			<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>

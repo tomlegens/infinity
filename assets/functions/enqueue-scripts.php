@@ -11,8 +11,8 @@ function site_scripts() {
     // Adding scripts file in the footer
     wp_enqueue_script( 'site-js', get_template_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), '', true );
 
-    // Register font awesome stylesheet
-    wp_enqueue_style( 'fa-css', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '', 'all' );
+    // Register font awesome stylesheet through async JS
+    wp_enqueue_script( 'fa-js', 'https://use.fontawesome.com/76a5187a15.js', array(), '', '' );
 
     // Register main stylesheet
     wp_enqueue_style( 'site-css', get_template_directory_uri() . '/assets/css/style.css', array(), '', 'all' );

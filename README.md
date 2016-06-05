@@ -2,7 +2,7 @@ Based on Foundation Framework
 
 Currently using Foundation 6.2.1
 
-### What is JointsWP?
+### What is Infinity?
 Infinity is a blank WordPress theme built with Foundation 6, giving you all the power and flexibility you need to build complex, mobile friendly websites without having to start from scratch.
 
 Infinity is a fork of the popular theme JointsWP.

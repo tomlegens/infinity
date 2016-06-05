@@ -1,0 +1,77 @@
+/******************************************************************
+
+Stylesheet: Mixins & Constants Stylesheet
+
+******************************************************************/
+
+/*********************
+TOOLS
+*********************/
+
+// http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+.image-replacement {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+
+/*********************
+COLORS
+*********************/
+
+
+/*********************
+TYPOGRAPHY
+*********************/
+@font-face {
+    	font-family: 'PT Sans Regular';
+    	src: url('../fonts/PT-Sans/PTS55F-regular.ttf');
+    	font-weight: normal;
+    	font-style: normal;
+}
+
+@font-face {
+  font-family: 'PT Sans Bold';
+  src: url('../fonts/PT-Sans/PTS75F-bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PT Sans Italic';
+  src: url('../fonts/PT-Sans/PTS56F-italic.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PT Sans Bold Italic';
+  src: url('../fonts/PT-Sans/PTS76F-bold-italic.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*********************
+CSS3 GRADIENTS.
+*********************/
+
+/* @include css-gradient(#dfdfdf,#f8f8f8); */
+@mixin css-gradient($from: #dfdfdf, $to: #f8f8f8) {
+	background-color: $to;
+	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+	background-image: -webkit-linear-gradient(top, $from, $to);
+	background-image: -moz-linear-gradient(top, $from, $to);
+	background-image: -o-linear-gradient(top, $from, $to);
+	background-image: linear-gradient(to bottom, $from, $to);
+}
+
+@mixin transition($args...) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+
+
