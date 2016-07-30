@@ -49,18 +49,6 @@ class CmsAceDependants {
          */
         $plugins = array(
 
-            // This is an example of how to include a plugin bundled with a theme.
-            array(
-                'name' => 'Advanced Custom Fields Pro', // The plugin name.
-                'slug' => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
-                'source' => get_stylesheet_directory() . '/assets/functions/plugins/advanced-custom-fields-pro.zip', // The plugin source.
-                'required' => true, // If false, the plugin is only 'recommended' instead of required.
-                'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
-                'force_activation' => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-                'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-                'external_url' => '', // If set, overrides default API URL and points to an external URL.
-            ),
-
             // This is an example of how to include a plugin from an arbitrary external source in your theme.
             /*array(
                 'name'         => 'TGM New Media Plugin', // The plugin name.
@@ -79,12 +67,21 @@ class CmsAceDependants {
                 'source'    => 'https://github.com/jrfnl/WP-adminbar-comments-to-pending/archive/master.zip',
             ),*/
 
+            // Due to licensing restrictions you will need to add your own copy of Advanced Custom Fields Pro.
+            array(
+                'name' => 'Advanced Custom Fields Pro', // The plugin name.
+                'slug' => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
+                'source' => get_stylesheet_directory() . '/assets/functions/plugins/advanced-custom-fields-pro.zip', // The plugin source.
+                'required' => true, // If false, the plugin is only 'recommended' instead of required.
+            ),
+
             // This is an example of how to include a plugin from the WordPress Plugin Repository.
             array(
                 'name' => 'WordPress SEO by Yoast',
                 'slug' => 'wordpress-seo',
                 'required' => false,
             ),
+            // Due to licensing restrictions you will need to add your own copy of Gravity Forms.
             array(
                 'name' => 'Gravity Forms',
                 'slug' => 'gravityforms',
@@ -97,6 +94,12 @@ class CmsAceDependants {
                 'slug' => 'wpclef',
                 'required' => false,
             ),
+            // Siteground.com hosting specific plugin.
+            array(
+                'name' => 'Supercacher',
+                'slug' => 'sg-cachepress',
+                'required' => false,
+            ),
 
             array(
                 'name' => 'Wordfence',
@@ -107,11 +110,6 @@ class CmsAceDependants {
                 'name' => 'What File',
                 'slug' => 'what-the-file',
                 'required' => true,
-            ),
-            array(
-                'name' => 'Zencache',
-                'slug' => 'zencache',
-                'required' => false,
             ),
 /*
             array(
@@ -126,11 +124,6 @@ class CmsAceDependants {
             // By setting 'is_callable' to either a function from that plugin or a class method
             // `array( 'class', 'method' )` similar to how you hook in to actions and filters, TGMPA can still
             // recognize the plugin as being installed.
-            array(
-                'name' => 'WordPress SEO by Yoast',
-                'slug' => 'wordpress-seo',
-                'is_callable' => 'wpseo_init',
-            ),
 
         );
 

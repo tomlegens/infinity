@@ -51,3 +51,6 @@ require_once(get_template_directory().'/assets/functions/disable-emoji.php');
 // require_once(get_template_directory().'/assets/functions/admin.php');
 
 /* Begin custom functions */
+
+// Keep WPMU logged in
+define( 'WPMUDEV_APIKEY' , 'c8dd7181094289a9abdb3eb594817ee1a797a5c5');
