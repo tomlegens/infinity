@@ -1,7 +1,3 @@
-/**
- * Custom JS/jQuery
- */
-
 jQuery(document).foundation();
 /*
 These functions make sure WordPress
